@@ -56,3 +56,22 @@ print(id(d[0]), id(d[-1]))  # 140731981244192 1964460364544
 ```
 
 
+### 4. 自定义排序规则
+
+针对`sorted`函数中的`key`，除了可以使用lambda表达式外，还可使用自定义函数实现自定义排序规则
+
+```python
+nums=[43,30,5,9,3]
+nums = [str(i) for i in nums]
+def cmp(x, y):
+    a, b = x + y, y + x
+    if a > b: return 1
+    elif a < b: return -1
+    else: return 0
+nums = sorted(nums, key = functools.cmp_to_key(cmp))
+print("".join(nums))    # "3034359"
+```
+
+另外 `sorted()` 会返回一个排序后的数组， 原数组不变， 而`iter.sort()`会在原数组中排序。
+
+### 5.
